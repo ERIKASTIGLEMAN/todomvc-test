@@ -3,5 +3,5 @@
 it("should be able to add a new todo to the list", () => {
 	cy.visit("http://todomvc-app-for-testing.surge.sh");
 
-	cy.get(".new-todo");
+	cy.get(".new-todo").type("Clean Room {enter}");
 });
