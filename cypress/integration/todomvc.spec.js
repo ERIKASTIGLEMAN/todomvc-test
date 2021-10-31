@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
 it("should be able to add a new todo to the list", () => {
-	cy.visit("http://todomvc-app-for-testing.surge.sh");
+	cy.visit("http://todomvc-app-for-testing.surge.sh/?delay-new-todo=3000");
 
 	cy.get(".new-todo").type("Clean Room {enter}");
 });
