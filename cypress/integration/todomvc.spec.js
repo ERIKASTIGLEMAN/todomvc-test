@@ -7,6 +7,8 @@ it("should be able to add a new todo to the list", () => {
 
 	cy.get("label").should("have.text", "Clean Room");
 
+	cy.get(".toggle").should("not.be.checked");
+
 	//	cy.get(".toggle").click();
 
 	//	cy.contains("Clear completed").click();
