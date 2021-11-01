@@ -1,7 +1,5 @@
 /// <reference types="cypress"/>
 
-const { beforeEach } = require("mocha");
-
 //create 3 test to separate the add todo, toggle tet, and clear testing (they are all encapsulated in the it() function above)
 
 describe("todo actions", () => {
@@ -10,10 +8,8 @@ describe("todo actions", () => {
 
 		cy.get(".new-todo", { timeout: 6000 }).type("Clean Room {enter}");
 	});
-
-	it.("should add a new item to the list", () => {
+	it("should add a new item to the list", () => {
 		cy.get("label").should("have.text", "Clean Room");
-
 		cy.get(".toggle").should("not.be.checked");
 	});
 
@@ -24,7 +20,6 @@ describe("todo actions", () => {
 
 	it("should clear completed todos", () => {
 		cy.contains("Clear completed").click();
-
 		cy.get(".todo-list").should("not.have.descendants", "li");
 	});
 });
