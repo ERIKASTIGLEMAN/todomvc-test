@@ -8,10 +8,10 @@ describe("todo actions", () => {
 	beforeEach(() => {
 		cy.visit("http://todomvc-app-for-testing.surge.sh/");
 
-		cy.get(".new-todo").type("Clean Room {enter}");
+		cy.get(".new-todo", { timeout: 6000 }).type("Clean Room {enter}");
 	});
 
-	it.only("should add a new item to the list", () => {
+	it.("should add a new item to the list", () => {
 		cy.get("label").should("have.text", "Clean Room");
 
 		cy.get(".toggle").should("not.be.checked");
