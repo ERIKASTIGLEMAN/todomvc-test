@@ -3,7 +3,7 @@
 //create 3 test to separate the add todo, toggle tet, and clear testing (they are all encapsulated in the it() function above)
 
 describe("todo actions", () => {
-	it("should add a new item to the list", () => {
+	it.only("should add a new item to the list", () => {
 		cy.visit("http://todomvc-app-for-testing.surge.sh/");
 
 		cy.get(".new-todo", { timeout: 6000 }).type("Clean Room {enter}");
