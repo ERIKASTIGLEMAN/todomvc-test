@@ -10,4 +10,7 @@ describe("filtering", () => {
 
 		cy, get(".todo-list li:nth-child(2) .toggle").click();
 	});
+	it('should filter "Active" todos', () => {
+		cy.contains("Active").click();
+	});
 });
