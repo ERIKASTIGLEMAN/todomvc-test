@@ -1,12 +1,16 @@
 /// <reference types="cypress"/>
 
+import { TodoPage } from "../page-objects/todo-page";
+
 //create 3 test to separate the add todo, toggle tet, and clear testing (they are all encapsulated in the it() function above)
 
 describe("todo actions", () => {
-	beforeEach(() => {
-		cy.visit("http://todomvc-app-for-testing.surge.sh/");
+	const todoPage = new TodoPage();
 
-		cy.get(".new-todo", { timeout: 6000 }).type("Clean Room {enter}");
+	beforeEach(() => {
+		todoPage.navigate();
+
+		todoPage.addTodo("Clean room");
 	});
 	it("should add a new item to the list", () => {
 		cy.get("label").should("have.text", "Clean Room");
