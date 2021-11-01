@@ -8,9 +8,10 @@ describe("filtering", () => {
 		cy.get(".new-todo").type("Study selectors {enter}");
 		cy.get(".new-todo").type("Learn cypress {enter}");
 
-		cy, get(".todo-list li:nth-child(2) .toggle").click();
+		cy.get(".todo-list li:nth-child(2) .toggle").click();
 	});
 	it('should filter "Active" todos', () => {
 		cy.contains("Active").click();
+		cy.get(".todo-list li").should("have.length", 2);
 	});
 });
