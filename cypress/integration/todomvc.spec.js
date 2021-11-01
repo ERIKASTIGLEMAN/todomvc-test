@@ -16,3 +16,11 @@ it("should be able to add a new todo to the list", () => {
 
 	cy.get(".todo-list").should("not.have.descendants", "li");
 });
+
+//create 3 test to separate the add todo, toggle tet, and clear testing (they are all encapsulated in the it() function above)
+
+it("should add a new item to the list", () => {});
+
+it("should mark a todo completed", () => {});
+
+it("should clear completed todos", () => {});
