@@ -8,7 +8,6 @@ export class TodoPage {
 	}
 }
 
-validateTodoTxt(todoIndex, expectedText) {
-  cy.get(`tod-list li:nth-child(${todoText + 1})label`)
-  .should("have.text", expectedText);
-}
+validateTodoText(todoIndex, expectedText) {
+    cy.get(`.todo-list li:nth-child(${todoIndex + 1}) label`).should('have.text', expectedText)
+  }
