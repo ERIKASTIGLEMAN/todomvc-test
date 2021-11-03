@@ -6,8 +6,11 @@ export class TodoPage {
 	addTodo(todoText) {
 		cy.get(".new-todo").type(todoText + "{enter}");
 	}
-}
 
-validateTodoText(todoIndex, expectedText) {
-    cy.get(`.todo-list li:nth-child(${todoIndex + 1}) label`).should('have.text', expectedText)
-  }
+	validateTodoText(todoIndex, expectedText) {
+		cy.get(`.todo-list li:nth-child(${todoIndex + 1}) label`).should(
+			"have.text",
+			expectedText
+		);
+	}
+}

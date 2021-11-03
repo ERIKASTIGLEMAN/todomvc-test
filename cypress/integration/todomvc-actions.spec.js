@@ -13,7 +13,7 @@ describe("todo actions", () => {
 		todoPage.addTodo("Clean room");
 	});
 	it("should add a new item to the list", () => {
-		todoPage.validateToolTxt(0, "Clean room");
+		todoPage.validateTodoText(0, "Clean room");
 		cy.get(".toggle").should("not.be.checked");
 	});
 
