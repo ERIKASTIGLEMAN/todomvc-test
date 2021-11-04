@@ -31,9 +31,9 @@ export function validateNumberOfTodoShown(expectedNumberOfTodos) {
 }
 
 export function validateTodoCompletedState(todoIndex, shouldBeCompleted) {
-	const l = cy.get(`.todo-list li:nth-child(${todoIndex + 1}) label`);
+	const 1 = cy.get(`.todo-list li:nth-child(${todoIndex + 1}) label`);
 
-	l.should(
+	1. should(
 		`${shouldBeCompleted ? "" : "not."}have.css`,
 		"text-decoration-line",
 		"line-through"
@@ -47,8 +47,8 @@ export function validateTodoText(todoIndex, expectedText) {
 	);
 }
 
-export function validateToggleState(todoindex, shouldBeToggled) {
-	const label = cy.get(`.todo-list li:nth-child (${todoLindex + 1})label`);
+export function validateToggleState(todoIndex, shouldBeToggled) {
+	const label = cy.get(`.todo-list li:nth-child (${todoIndex + 1})label`);
 
 	label.should(`${shouldBeToggled ? "" : "not."}be.checked`);
 }
