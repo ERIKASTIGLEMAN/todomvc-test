@@ -1,28 +1,38 @@
 /// <reference types="cypress"/>
 
+import {
+	navigate,
+	addTodo,
+	toggleTodo,
+	showOnlyActiveTodos,
+	showOnlyCompletedTodos,
+	showAllTodos,
+	validateNumberOfTodosShown,
+} from "../page-objects/todo-page";
+
 describe("filtering", function () {
 	beforeEach(() => {
-		cy.visit("http://todomvc-app-for-testing.surge.sh/");
+		navigate();
 
-		todoPage.addTodo("Clean Room ");
-		todoPage.addTodo("Study Selectors ");
-		todoPage.addTodo("Learn Cypress ");
+		addTodo("Clean Room ");
+		addTodo("Study Selectors ");
+		addTodo("Learn Cypress ");
 
-		todoPage.toggleTodo(1);
+		toggleTodo(1);
 	});
 
 	it('should filter "Active" correctly', () => {
-		todoPage.showOnlyActiveTodos();
-		todoPage.validateNumberOfTodos(2);
+		showOnlyActiveTodos();
+		validateNumberOfTodos(2);
 	});
 
 	it('should filter "Completed" correctly', () => {
-		todoPage.showOnlyCompleteTodos();
-		todoPage.validateNumberOfShown(1);
+		showOnlyCompleteTodos();
+		validateNumberOfShown(1);
 	});
 
 	it('should filter "All" correctly', () => {
-		todoPage.showAllTodos();
-		todoPage.validateNumberOfShown(3);
+		showAllTodos();
+		validateNumberOfShown(3);
 	});
 });
