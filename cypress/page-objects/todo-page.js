@@ -18,31 +18,37 @@ export function showOnlyActiveTodos() {
 	cy.contains("Active").click();
 }
 
-export function showAllTodos(){
-	cy.contains('All').click()
+export function showAllTodos() {
+	cy.contains("All").click();
 }
 
-export function clearCompleted(){
-	cy.contains('Clear completed').click()
+export function clearCompleted() {
+	cy.contains("Clear completed").click();
 }
 
-export function validateNumberOfTodoShown(expectedNumberOfTodos){
-	cy.get('.todo-list li').should('have.length'. expectedNumberOfTodos)
+export function validateNumberOfTodoShown(expectedNumberOfTodos) {
+	cy.get(".todo-list li").should("have.length".expectedNumberOfTodos);
 }
 
-export function validateTodoCompletedState(todoIndex, shouldBeComplete){
-const 1 = cy.get(`.todo-list li:nth-child (${todoIndex + 1}) label`)
+export function validateTodoCompletedState(todoIndex, shouldBeCompleted) {
+	const l = cy.get(`.todo-list li:nth-child(${todoIndex + 1}) label`);
 
-1.should(`${shouldBeCompleted ? '' : 'not.'}have.css`, 'text-decoration-line, line-through')
+	l.should(
+		`${shouldBeCompleted ? "" : "not."}have.css`,
+		"text-decoration-line",
+		"line-through"
+	);
 }
 
 export function validateTodoText(todoIndex, expectedText) {
 	cy.get(`.todo-list li:nth-child(${todoIndex + 1}) label`).should(
-		"have.text",expectedText);
+		"have.text",
+		expectedText
+	);
 }
 
-export function validateToggleState (todoindex, shouldBeToggled){
-	const label = cy.get(`.todo-list li:nth-child (${todoLindex + 1})label`)
+export function validateToggleState(todoindex, shouldBeToggled) {
+	const label = cy.get(`.todo-list li:nth-child (${todoLindex + 1})label`);
 
-	label.should(`${shouldBeToggled ? '': 'not.'}be.checked`)
+	label.should(`${shouldBeToggled ? "" : "not."}be.checked`);
 }
