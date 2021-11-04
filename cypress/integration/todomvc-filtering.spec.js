@@ -1,27 +1,28 @@
 /// <reference types="cypress"/>
 
-describe("filtering", () => {
+describe("filtering", function () {
 	beforeEach(() => {
 		cy.visit("http://todomvc-app-for-testing.surge.sh/");
 
-		cy.get(".new-todo").type("Clean Room {enter}");
-		cy.get(".new-todo").type("Study selectors {enter}");
-		cy.get(".new-todo").type("Learn cypress {enter}");
+		todoPage.addTodo("Clean Room ");
+		todoPage.addTodo("Study Selectors ");
+		todoPage.addTodo("Learn Cypress ");
 
-		cy.get(".todo-list li:nth-child(2) .toggle").click();
-	});
-	it('should filter "Active" todos', () => {
-		cy.contains("Active").click();
-		cy.get(".todo-list li").should("have.length", 2);
+		todoPage.toggleTodo(1);
 	});
 
-	it('should filter "Completed" todos', () => {
-		cy.contains("Completed").click();
-		cy.get(".todo-list li").should("have.length", 1);
+	it('should filter "Active" correctly', () => {
+		todoPage.showOnlyActiveTodos();
+		todoPage.validateNumberOfTodos(2);
 	});
 
-	it('should filter "All" todos', () => {
-		cy.contains("All").click();
-		cy.get(".todo-list li").should("have.length", 3);
+	it('should filter "Completed" correctly', () => {
+		todoPage.showOnlyCompleteTodos();
+		todoPage.validateNumberOfShown(1);
+	});
+
+	it('should filter "All" correctly', () => {
+		todoPage.showAllTodos();
+		todoPage.validateNumberOfShown(3);
 	});
 });
