@@ -14,17 +14,21 @@ describe("todo actions", () => {
 	});
 	it("should add a new item to the list", () => {
 		todoPage.validateTodoText(0, "Clean room");
-		cy.get(".toggle").should("not.be.checked");
+		todoPage.validateToggleState(0, false);
 	});
 
-	it("should mark a todo completed", () => {
-		cy.get(".toggle").click();
-		cy.get("label").should("have.css", "text-decoration-line", "line-through");
-	});
+	describe("toggling todos", () => {
+		it("should toggle test correctly", () => {
+			todoPage.toggleTodo(0);
+			todoPage.validateTodoCompletedState(0, true);
+		});
 
-	it("should clear completed todos", () => {
-		cy.get(".toggle").click();
-		cy.contains("Clear completed").click();
-		cy.get(".todo-list").should("not.have.descendants", "li");
+		it("should clear completed", () => {
+			todoPage.toggleTodo(0);
+
+			todoPage.clearComplete();
+
+			todoPage.validateNumberOfTodosShown(0);
+		});
 	});
 });
